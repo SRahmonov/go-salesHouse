@@ -124,7 +124,7 @@ func ExampleSearchByDistricts_TwoOrMoreResults() {
 func ExampleSortByRemotenessFromCenterNear() {
 	ascSorted := sortByRemotenessFromCenterNear(houses)
 	fmt.Println(ascSorted)
-	// Output: [{3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси} {2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки}{1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж. [] false 90000 Душанбе 5 Рудаки}]
+	// Output: [{3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси} {2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки} {1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж [] false 90000 Душанбе 5 Рудаки}]
 }
 
 func ExampleSortByRemotenessFromCenterFar() {
