@@ -37,18 +37,13 @@ var houses = []house{
 		district:          "Фирдавси",
 	},
 }
-func ExampleSortByPriceCheap() {
-	ascSorted := sortByPriceCheap(houses)
-	fmt.Println(ascSorted)
+func ExampleSortByPriceAscAndDesc() {
+	sortByPriceAsc, sortByPriceDesc := sortByAscAndDesc(houses)
+	fmt.Println(sortByPriceAsc)
+	fmt.Println(sortByPriceDesc)
 	// Output: [{1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж [] false 90000 Душанбе 5 Рудаки} {3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси} {2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки}]
+	// [{2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки} {3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси} {1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж [] false 90000 Душанбе 5 Рудаки}]
 }
-
-func ExampleSortByPriceExpensive() {
-	descSorted := sortByPriceExpensive(houses)
-	fmt.Println(descSorted)
-	// Output: [{2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки} {3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси} {1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж [] false 90000 Душанбе 5 Рудаки}]
-}
-
 func ExampleSearchByMaxPrice_NoResults() {
 	result := searchByMaxPrice(houses, 80_000)
 	fmt.Println(result)
@@ -121,14 +116,10 @@ func ExampleSearchByDistricts_TwoOrMoreResults() {
 	// Output: [{1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж [] false 90000 Душанбе 5 Рудаки} {2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки} {3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси}]
 }
 
-func ExampleSortByRemotenessFromCenterNear() {
-	ascSorted := sortByRemotenessFromCenterNear(houses)
-	fmt.Println(ascSorted)
+func ExampleSortByRemotenessFromCenterNearAndFar() {
+	sortByRemotenessFromCenterNear, sortByRemotenessFromCenterFar := sortByRemotenessFromCenterNearAndFar(houses)
+	fmt.Println(sortByRemotenessFromCenterNear)
+	fmt.Println(sortByRemotenessFromCenterFar)
 	// Output: [{3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси} {2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки} {1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж [] false 90000 Душанбе 5 Рудаки}]
-}
-
-func ExampleSortByRemotenessFromCenterFar() {
-	descSorted := sortByRemotenessFromCenterFar(houses)
-	fmt.Println(descSorted)
-	// Output:[{1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж [] false 90000 Душанбе 5 Рудаки} {2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки} {3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси}]
+ 	//[{1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж [] false 90000 Душанбе 5 Рудаки} {2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки} {3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси}]
 }

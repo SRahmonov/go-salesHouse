@@ -13,39 +13,33 @@ type house struct {
 	farFromCenterInKm int64
 	district          string
 }
-func sortByPriceCheap(houses []house) []house {
-	result := make([]house, len(houses))
-	copy(result, houses)
-	sort.Slice(result, func(i, j int) bool {
-		return result[i].price < result[j].price
+
+func sortByAscAndDesc(houses []house) (resultAsc, resultDesc []house) {
+	resultAsc = make([]house, len(houses))
+	copy(resultAsc, houses)
+	resultDesc = make([]house, len(houses))
+	copy(resultDesc, houses)
+	sort.Slice(resultAsc, func(i, j int) bool {
+		return resultAsc[i].price < resultAsc[j].price
 	})
-	return result
+	sort.Slice(resultDesc, func(i, j int) bool {
+		return resultDesc[i].price > resultDesc[j].price
+	})
+	return
 }
 
-func sortByPriceExpensive(houses []house) []house {
-	result := make([]house, len(houses))
-	copy(result, houses)
-	sort.Slice(result, func(i, j int) bool {
-		return result[i].price > result[j].price
+func sortByRemotenessFromCenterNearAndFar(houses []house) (resultForNear, resultForFar []house) {
+	resultForNear = make([]house, len(houses))
+	copy(resultForNear, houses)
+	resultForFar = make([]house, len(houses))
+	copy(resultForFar, houses)
+	sort.Slice(resultForNear, func(i, j int) bool {
+		return resultForNear[i].farFromCenterInKm < resultForNear[j].farFromCenterInKm
 	})
-	return result
-}
-
-func sortByRemotenessFromCenterNear(houses []house) []house {
-	result := make([]house, len(houses))
-	copy(result, houses)
-	sort.Slice(result, func(i, j int) bool {
-		return result[i].farFromCenterInKm < result[j].farFromCenterInKm
+	sort.Slice(resultForFar, func(i, j int) bool {
+		return resultForFar[i].farFromCenterInKm > resultForFar[j].farFromCenterInKm
 	})
-	return result
-}
-func sortByRemotenessFromCenterFar(houses []house) []house {
-	result := make([]house, len(houses))
-	copy(result, houses)
-	sort.Slice(result, func(i, j int) bool {
-		return result[i].farFromCenterInKm > result[j].farFromCenterInKm
-	})
-	return result
+	return
 }
 func searchByMaxPrice(houses []house, max int64) []house {
 	result := make([]house, 0)
