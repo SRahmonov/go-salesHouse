@@ -41,6 +41,7 @@ func sortByRemotenessFromCenterNearAndFar(houses []house) (resultForNear, result
 	})
 	return
 }
+
 func searchByMaxPrice(houses []house, max int64) []house {
 	result := make([]house, 0)
 	for _, house := range houses {
@@ -50,6 +51,7 @@ func searchByMaxPrice(houses []house, max int64) []house {
 	}
 	return result
 }
+
 func searchByMinAndMaxPrice(houses []house, min int64, max int64) []house {
 	result := make([]house, 0)
 	for _, house := range houses {
@@ -59,6 +61,7 @@ func searchByMinAndMaxPrice(houses []house, min int64, max int64) []house {
 	}
 	return result
 }
+
 func searchByDistrict(houses []house, district string) []house {
 	result := make([]house, 0)
 	for _, house := range houses {
@@ -68,6 +71,7 @@ func searchByDistrict(houses []house, district string) []house {
 	}
 	return result
 }
+
 func searchByDistricts(houses []house, districts []string) []house {
 	result := make([]house, 0)
 	for _, house := range houses {
@@ -80,5 +84,7 @@ func searchByDistricts(houses []house, districts []string) []house {
 	}
 	return result
 }
+
 func main() {
+
 }
