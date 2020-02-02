@@ -14,77 +14,66 @@ type house struct {
 	district          string
 }
 
-func sortByAscAndDesc(houses []house) (resultAsc, resultDesc []house) {
-	resultAsc = make([]house, len(houses))
-	copy(resultAsc, houses)
-	resultDesc = make([]house, len(houses))
-	copy(resultDesc, houses)
-	sort.Slice(resultAsc, func(i, j int) bool {
-		return resultAsc[i].price < resultAsc[j].price
+func sortBy(houses []house, less func(a, b house) bool) []house {
+	result := make([]house, len(houses))
+	copy(result, houses)
+	sort.Slice(result, func(i, j int) bool {
+		return less(result[i], result[j])
 	})
-	sort.Slice(resultDesc, func(i, j int) bool {
-		return resultDesc[i].price > resultDesc[j].price
-	})
-	return
+	return result
 }
+func sortByPriceAsc(houses []house) []house {
+	return sortBy(houses, func(a, b house) bool {
+		return a.price < b.price
+	})
 
-func sortByRemotenessFromCenterNearAndFar(houses []house) (resultForNear, resultForFar []house) {
-	resultForNear = make([]house, len(houses))
-	copy(resultForNear, houses)
-	resultForFar = make([]house, len(houses))
-	copy(resultForFar, houses)
-	sort.Slice(resultForNear, func(i, j int) bool {
-		return resultForNear[i].farFromCenterInKm < resultForNear[j].farFromCenterInKm
-	})
-	sort.Slice(resultForFar, func(i, j int) bool {
-		return resultForFar[i].farFromCenterInKm > resultForFar[j].farFromCenterInKm
-	})
-	return
 }
+func sortByPriceDesc(houses []house) []house {
+	return sortBy(houses, func(a, b house) bool {
+		return a.price > b.price
+	})
+}
+func farFromCenterAsc(houses []house) []house {
+	return sortBy(houses, func(a, b house) bool {
+		return a.farFromCenterInKm > b.farFromCenterInKm
 
-func searchByMaxPrice(houses []house, max int64) []house {
+	})
+}
+func farFromCenterDesc(houses []house) []house {
+	return sortBy(houses, func(a, b house) bool {
+		return a.farFromCenterInKm < b.farFromCenterInKm
+
+	})
+}
+func searchBy(houses []house, less func(a house) bool) []house {
 	result := make([]house, 0)
 	for _, house := range houses {
-		if house.price <= max {
+		if less(house) {
 			result = append(result, house)
 		}
 	}
 	return result
 }
+func searchByMaxPrice(houses []house, MaxPrice int64) []house {
+	return searchBy(houses, func(a house) bool {
+		return a.price <= MaxPrice
 
-func searchByMinAndMaxPrice(houses []house, min int64, max int64) []house {
+	})
+}
+func searchByPrice(houses []house, startLimit int64, endLimit int64) []house {
+	return searchBy(houses, func(a house) bool {
+		return a.price >= startLimit && a.price <= endLimit
+	})
+}
+
+func searchByDistricts(houses []house, districts string) []house {
 	result := make([]house, 0)
 	for _, house := range houses {
-		if house.price >= min && house.price <= max {
+		if house.district == districts {
 			result = append(result, house)
 		}
 	}
 	return result
 }
-
-func searchByDistrict(houses []house, district string) []house {
-	result := make([]house, 0)
-	for _, house := range houses {
-		if house.district == district {
-			result = append(result, house)
-		}
-	}
-	return result
-}
-
-func searchByDistricts(houses []house, districts []string) []house {
-	result := make([]house, 0)
-	for _, house := range houses {
-		for _, district := range districts {
-			if house.district == district {
-				result = append(result, house)
-				continue
-			}
-		}
-	}
-	return result
-}
-
 func main() {
-
 }
