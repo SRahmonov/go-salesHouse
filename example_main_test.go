@@ -85,19 +85,19 @@ func ExampleSearchByMinAndMaxPrice_TwoOrMoreResults() {
 }
 
 func ExampleSearchByDistrict_NoResults() {
-	result := searchByDistricts(houses, "Айни")
+	result := searchByDistrict(houses, "Айни")
 	fmt.Println(result)
 	// Output: []
 }
 
 func ExampleSearchByDistrict_OneResult() {
-	result := searchByDistricts(houses, "Фирдавси")
+	result := searchByDistrict(houses, "Фирдавси")
 	fmt.Println(result)
 	// Output: [{3 2-комн. квартира, 5 этаж, 25 м² Кирпичный дом. Имеется огород. [] false 120000 Душанбе 0 Фирдавси}]
 }
 
 func ExampleSearchByDistrict_TwoOrMoreResults() {
-	result := searchByDistricts(houses, "Рудаки")
+	result := searchByDistrict(houses, "Рудаки")
 	fmt.Println(result)
 	// Output: [{1 2-комн. квартира, 1 этаж, 34 м² Кирпичный дом. Имеется гараж [] false 90000 Душанбе 5 Рудаки} {2 3-комн. квартира, 2 этаж, 42 м² Кирпичный дом. Имеется огород. [] false 150000 Душанбе 1 Рудаки}]
 }

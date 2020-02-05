@@ -66,14 +66,11 @@ func searchByPrice(houses []house, startLimit int64, endLimit int64) []house {
 	})
 }
 
-func searchByDistricts(houses []house, districts string) []house {
-	result := make([]house, 0)
-	for _, house := range houses {
-		if house.district == districts {
-			result = append(result, house)
-		}
-	}
-	return result
+func searchByDistrict(houses []house, district string) []house {
+	return searchBy(houses, func(a house) bool {
+		return a.district == district
+	})
+
 }
 func main() {
 }
